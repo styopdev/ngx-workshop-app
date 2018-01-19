@@ -1,0 +1,11 @@
+.crypto-list {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+/* 
+.crypto-list a {
+
+} */
+.crypto-list li .info {
+    margin-left: 20px;
+}
