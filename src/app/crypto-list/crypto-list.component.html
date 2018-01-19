@@ -1,9 +1,23 @@
-<ul class="crypto-list">
-  <li *ngFor="let currency of coinList"> 
-    <a href="">
-      <img width="40px" src="https://www.cryptocompare.com/{{currency.value.ImageUrl}}" alt="">
-      <span>{{currency.key}}</span>
-    </a>
-    <a class="info" href="https://www.cryptocompare.com{{currency.value.Url}}" targe="_blank">Details</a>
-  </li>
-</ul>
+<table border="1px" cellpadding="8px;" cellspacing="1px" class="crypto-list">
+  <tr>
+    <th>Price</th>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Details</th>
+  </tr>
+  <tr *ngFor="let currency of coinList">
+    <td>
+        <a *ngIf="visibleItems.indexOf(currency) == -1" class="view-price" (click)="showRate(currency)">View price</a>
+        <coin-price *ngIf="visibleItems.indexOf(currency) != -1" [currency]="currency"></coin-price>
+    </td>
+    <td>
+        <img width="100px" src="https://www.cryptocompare.com/{{currency.value.ImageUrl}}" alt="">
+    </td>
+    <td>
+        <span class="title">{{currency.key}}</span>
+    </td>
+    <td>
+        <a class="info" href="https://www.cryptocompare.com{{currency.value.Url}}" target="_blank">Details</a>
+    </td>
+  </tr>
+</table>

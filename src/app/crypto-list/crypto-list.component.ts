@@ -8,14 +8,19 @@ import { CryptoService } from '../services/crypto.service'
 })
 export class CryptoListComponent implements OnInit {
   public coinList: Object;
-  constructor(public crService: CryptoService) { }
+  public visibleItems: any[] = [];
+
+  constructor(public crService: CryptoService) {
+    this.visibleItems = new Array();
+  }
 
   ngOnInit() {
     this.crService.getCryptoCurrencyList()
-      .subscribe(list => {
-        this.coinList = list.splice(0, 100);
-        console.log(list);
-      });
+      .subscribe(list => this.coinList = list.splice(0, 100));
+  }
+
+  showRate(currency) {
+    this.visibleItems.push(currency);
   }
 
 }
